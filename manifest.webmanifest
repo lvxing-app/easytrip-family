@@ -1,0 +1,18 @@
+{
+  "name": "一路简行 · EasyTrip",
+  "short_name": "一路简行",
+  "description": "面向全年龄用户的国内与国际旅行计划 App",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f8f7",
+  "theme_color": "#167a6b",
+  "icons": [
+    {
+      "src": "assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
