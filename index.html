@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#167a6b">
+  <meta name="description" content="一路简行——面向全年龄用户的国内与国际旅行计划演示 App">
+  <title>一路简行 · 旅行计划 App 演示</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="demo-ribbon" role="status" data-i18n="demoRibbon">演示环境 · 预订与实时数据为模拟结果</div>
+
+  <div class="app-frame" id="appFrame">
+    <header class="topbar">
+      <button class="brand-button" type="button" data-view-target="planner" aria-label="返回计划首页">
+        <span class="brand-mark" aria-hidden="true">行</span>
+        <span><strong data-i18n="appName">一路简行</strong><small>EasyTrip</small></span>
+      </button>
+      <div class="top-actions">
+        <button class="icon-button language-button" id="languageButton" type="button" aria-label="选择界面语言" data-i18n-aria="chooseLanguage">
+          <span id="currentLanguageCode" aria-hidden="true">中</span>
+        </button>
+        <button class="icon-button" id="accessibilityButton" type="button" aria-pressed="false" aria-label="开启大字简洁模式">
+          <span aria-hidden="true">大</span>
+        </button>
+        <button class="avatar-button" id="profileButton" type="button" aria-label="打开服务与设置">我</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="app-view active" id="plannerView" data-view="planner" aria-labelledby="plannerTitle">
+        <div class="hero">
+          <span class="eyebrow" data-i18n="heroEyebrow">国内与全球旅行，一次规划</span>
+          <h1 id="plannerTitle" data-i18n="heroTitle">说出需求，行程就准备好了</h1>
+          <p data-i18n="heroSubtitle">年轻人可以快速调整，父母也能看懂并独立使用。</p>
+        </div>
+
+        <div class="market-switch" role="group" aria-label="旅行范围">
+          <button class="segment active" type="button" data-market="domestic" aria-pressed="true" data-i18n="domestic">国内游</button>
+          <button class="segment" type="button" data-market="international" aria-pressed="false" data-i18n="international">出境游</button>
+        </div>
+
+        <div class="prompt-box">
+          <label for="tripPrompt" data-i18n="promptLabel">你想怎么旅行？</label>
+          <textarea id="tripPrompt" rows="3">带父母去成都玩4天，少走路，想看熊猫和吃当地美食</textarea>
+          <div class="prompt-tools">
+            <button class="text-button" id="voiceButton" type="button"><span aria-hidden="true">◉</span> <span data-i18n="voiceInput">语音说需求</span></button>
+            <span id="promptHint">系统会自动识别同行人、天数和偏好</span>
+          </div>
+        </div>
+
+        <div class="suggestions" aria-label="热门目的地">
+          <button class="suggestion active" type="button" data-destination="成都">成都</button>
+          <button class="suggestion" type="button" data-destination="上海">上海</button>
+          <button class="suggestion" type="button" data-destination="北京">北京</button>
+          <button class="suggestion international-only" type="button" data-destination="东京">东京</button>
+          <button class="suggestion international-only" type="button" data-destination="巴黎">巴黎</button>
+          <button class="suggestion international-only" type="button" data-destination="新加坡">新加坡</button>
+        </div>
+
+        <details class="details-panel" open>
+          <summary><span data-i18n="confirmInfo">确认基本信息</span> <span data-i18n="optional">可选填</span></summary>
+          <div class="form-grid">
+            <label><span data-i18n="startDate">出发日期</span>
+              <input id="startDate" type="date" value="2026-09-12">
+            </label>
+            <label><span data-i18n="tripDays">旅行天数</span>
+              <select id="tripDays">
+                <option value="3" data-i18n="days3">3天</option>
+                <option value="4" selected data-i18n="days4">4天</option>
+                <option value="5" data-i18n="days5">5天</option>
+                <option value="7" data-i18n="days7">7天</option>
+                <option value="10" data-i18n="days10">10天</option>
+              </select>
+            </label>
+            <label><span data-i18n="travelers">同行人员</span>
+              <select id="travelers">
+                <option value="couple" data-i18n="travelerCouple">2位成人</option>
+                <option value="family" selected data-i18n="travelerFamily">2位成人 + 2位长辈</option>
+                <option value="kids" data-i18n="travelerKids">2位成人 + 1位儿童</option>
+                <option value="solo" data-i18n="travelerSolo">1人独行</option>
+              </select>
+            </label>
+            <label><span data-i18n="budget">预算偏好</span>
+              <select id="budget">
+                <option value="value" data-i18n="budgetValue">经济省心</option>
+                <option value="balanced" selected data-i18n="budgetBalanced">舒适平衡</option>
+                <option value="premium" data-i18n="budgetPremium">品质优先</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="choice-fieldset">
+            <legend data-i18n="pace">旅行节奏</legend>
+            <div class="pill-row">
+              <label><input type="radio" name="pace" value="relaxed" checked><span data-i18n="paceRelaxed">轻松慢游</span></label>
+              <label><input type="radio" name="pace" value="balanced"><span data-i18n="paceBalanced">经典适中</span></label>
+              <label><input type="radio" name="pace" value="packed"><span data-i18n="pacePacked">充实行程</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="choice-fieldset">
+            <legend data-i18n="interests">希望包含</legend>
+            <div class="pill-row">
+              <label><input type="checkbox" name="interest" value="food" checked><span data-i18n="interestFood">当地美食</span></label>
+              <label><input type="checkbox" name="interest" value="culture" checked><span data-i18n="interestCulture">文化景点</span></label>
+              <label><input type="checkbox" name="interest" value="nature"><span data-i18n="interestNature">自然风景</span></label>
+              <label><input type="checkbox" name="interest" value="shopping"><span data-i18n="interestShopping">购物</span></label>
+            </div>
+          </fieldset>
+        </details>
+
+        <button class="primary-button generate-button" id="generateButton" type="button">
+          <span aria-hidden="true">✦</span> <span data-i18n="generate">生成完整旅行方案</span>
+        </button>
+
+        <div class="connected-line" aria-label="可用服务">
+          <span data-i18n="covered">已覆盖</span>
+          <span data-i18n="mapNavigation">地图导航</span><span data-i18n="hotel">酒店</span><span data-i18n="transportTickets">交通票务</span><span data-i18n="attractionTickets">景点门票</span><span data-i18n="weather">天气</span><span data-i18n="translationShort">翻译</span><span data-i18n="familyChat">家庭群聊</span>
+        </div>
+      </section>
+
+      <section class="app-view" id="itineraryView" data-view="itinerary" aria-labelledby="tripTitle">
+        <div class="trip-heading">
+          <button class="back-button" type="button" data-view-target="planner" aria-label="返回修改计划">‹</button>
+          <div>
+            <span class="eyebrow" id="tripScope">国内家庭旅行</span>
+            <h1 id="tripTitle">成都 · 4天轻松游</h1>
+            <p id="tripMeta">2026年9月12日出发 · 4人 · 舒适平衡</p>
+          </div>
+          <button class="share-button" id="shareButton" type="button">分享</button>
+        </div>
+
+        <div class="trip-tabs" role="tablist" aria-label="行程内容">
+          <button class="trip-tab active" type="button" data-trip-panel="schedule" role="tab" aria-selected="true" data-i18n="dailyPlan">每日行程</button>
+          <button class="trip-tab" type="button" data-trip-panel="bookings" role="tab" aria-selected="false" data-i18n="bookingServices">预订服务</button>
+          <button class="trip-tab" type="button" data-trip-panel="essentials" role="tab" aria-selected="false" data-i18n="preparation">出行准备</button>
+        </div>
+
+        <div class="trip-panel active" data-trip-panel-content="schedule">
+          <div class="weather-strip">
+            <span><strong id="weatherTemp">24–30°C</strong><small id="weatherText">多云，适合出行</small></span>
+            <span><strong id="walkDistance">约 3.8 km</strong><small>今日预计步行</small></span>
+            <button id="refreshWeather" class="small-button" type="button" data-i18n="refreshWeather">更新天气</button>
+          </div>
+          <section class="map-panel" aria-labelledby="mapTitle">
+            <div class="map-heading">
+              <div>
+                <span class="eyebrow" id="mapProviderLabel">高德地图</span>
+                <h2 id="mapTitle" data-i18n="routeMap">当日路线地图</h2>
+              </div>
+              <span class="map-provider-state" id="mapProviderState">自动选择</span>
+            </div>
+            <div class="map-mode-switch" role="group" aria-label="出行方式">
+              <button class="map-mode active" type="button" data-map-mode="walking" aria-pressed="true" data-i18n="walking">步行</button>
+              <button class="map-mode" type="button" data-map-mode="transit" aria-pressed="false" data-i18n="transit">公交</button>
+              <button class="map-mode" type="button" data-map-mode="driving" aria-pressed="false" data-i18n="driving">驾车</button>
+            </div>
+            <div class="trip-map" id="tripMap" role="application" aria-label="当日地点和路线地图">
+              <div class="map-loading" id="mapLoading"><span class="map-loading-dot" aria-hidden="true"></span><strong data-i18n="loadingMap">正在加载地图…</strong></div>
+            </div>
+            <div class="map-footer">
+              <span id="mapStatus">正在准备地图服务</span>
+              <button class="small-button" id="openLocalMapButton" type="button" data-i18n="openLocalMap">在地图中打开</button>
+            </div>
+          </section>
+          <div class="day-selector" id="daySelector" aria-label="选择日期"></div>
+          <div class="route-summary" aria-label="当日路线概览">
+            <div class="route-line" id="routeLine"></div>
+          </div>
+          <div class="timeline" id="timeline"></div>
+          <button class="secondary-button full-width" id="optimizeButton" type="button" data-i18n="optimizeRoute">重新优化路线</button>
+        </div>
+
+        <div class="trip-panel" data-trip-panel-content="bookings">
+          <div class="booking-summary">
+            <div><strong id="bookingTotal">¥4,860</strong><span>当前预估总费用</span></div>
+            <div><strong id="bookingSaved">已锁定 0/4</strong><span>完成后自动加入行程</span></div>
+          </div>
+          <div class="service-list" id="serviceList"></div>
+        </div>
+
+        <div class="trip-panel" data-trip-panel-content="essentials">
+          <div class="checklist" id="checklist">
+            <label><input type="checkbox" checked><span><strong>身份证件</strong><small id="documentHint">同行人的身份证</small></span></label>
+            <label><input type="checkbox"><span><strong>常用药和健康信息</strong><small>可由家人远程补充</small></span></label>
+            <label><input type="checkbox"><span><strong>离线行程与地图</strong><small>无网络时仍可查看</small></span></label>
+            <label class="international-essential"><input type="checkbox"><span><strong>护照、签证与保险</strong><small>系统检查有效期和目的地要求</small></span></label>
+            <label class="international-essential"><input type="checkbox"><span><strong>外币与上网服务</strong><small>汇率、电话卡及漫游提醒</small></span></label>
+          </div>
+          <button class="primary-button full-width" id="downloadOfflineButton" type="button" data-i18n="saveOffline">保存离线旅行包</button>
+        </div>
+      </section>
+
+      <section class="app-view" id="familyView" data-view="family" aria-labelledby="familyPageTitle">
+        <div class="family-page-heading">
+          <span class="eyebrow" data-i18n="familySpace">Family Space · 家庭空间</span>
+          <h1 id="familyPageTitle" data-i18n="familyChatTitle">家庭群聊</h1>
+          <p data-i18n="familyChatSubtitle">一家人进入同一个家庭，聊天、看行程、互相报平安。</p>
+        </div>
+
+        <section class="family-account-panel" id="familyAuthPanel" aria-labelledby="familyAccountTitle">
+          <div class="family-auth-switch" role="tablist" aria-label="账号操作">
+            <button class="active" type="button" data-family-auth-mode="register" role="tab" aria-selected="true" data-i18n="registerAccount">注册账号</button>
+            <button type="button" data-family-auth-mode="login" role="tab" aria-selected="false" data-i18n="loginAccount">登录</button>
+          </div>
+          <h2 class="sr-only" id="familyAccountTitle" data-i18n="familyAccount">家庭账号</h2>
+          <p class="family-demo-note" data-i18n="demoAccountNote">演示账号只保存在本机，请勿填写真实敏感信息。</p>
+          <form class="family-account-form active" id="familyRegisterForm" data-family-auth-form="register">
+            <label><span data-i18n="nickname">你的称呼</span><input id="familyRegisterNickname" type="text" maxlength="20" autocomplete="nickname" placeholder="例如：小林"></label>
+            <label><span data-i18n="phoneOrEmail">手机号或邮箱</span><input id="familyRegisterAccount" type="text" maxlength="50" autocomplete="username" placeholder="用于登录家庭"></label>
+            <div class="family-code-row">
+              <label><span data-i18n="verificationCode">验证码</span><input id="familyRegisterCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="6位数字"></label>
+              <button class="secondary-button" type="button" data-send-family-code="register" data-i18n="getCode">获取验证码</button>
+            </div>
+            <button class="primary-button full-width" type="submit" data-i18n="registerAndContinue">注册并继续</button>
+          </form>
+          <form class="family-account-form" id="familyLoginForm" data-family-auth-form="login" hidden>
+            <label><span data-i18n="phoneOrEmail">手机号或邮箱</span><input id="familyLoginAccount" type="text" maxlength="50" autocomplete="username" placeholder="输入已注册账号"></label>
+            <div class="family-code-row">
+              <label><span data-i18n="verificationCode">验证码</span><input id="familyLoginCode" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="6位数字"></label>
+              <button class="secondary-button" type="button" data-send-family-code="login" data-i18n="getCode">获取验证码</button>
+            </div>
+            <button class="primary-button full-width" type="submit" data-i18n="loginAndContinue">登录并继续</button>
+          </form>
+        </section>
+
+        <section class="family-home-panel" id="familyHomePanel" hidden aria-labelledby="familyHomeTitle">
+          <div class="family-account-strip">
+            <span class="family-avatar" id="familyAccountAvatar" aria-hidden="true">我</span>
+            <span><strong id="familyAccountName">旅行者</strong><small id="familyAccountId"></small></span>
+            <button class="text-button" id="familyLogoutButton" type="button" data-i18n="logoutAccount">退出账号</button>
+          </div>
+          <div class="family-page-heading compact">
+            <h2 id="familyHomeTitle" data-i18n="createOrJoinFamily">创建或加入一个家庭</h2>
+            <p data-i18n="familyEntryHelp">家人使用同一个邀请码，就能进入同一个聊天室。</p>
+          </div>
+          <div class="family-entry-grid">
+            <form class="family-entry-card" id="createFamilyForm">
+              <span class="family-entry-icon" aria-hidden="true">＋</span>
+              <h3 data-i18n="createFamily">创建家庭</h3>
+              <label><span data-i18n="familyName">家庭名称</span><input id="newFamilyName" type="text" maxlength="24" placeholder="例如：幸福一家"></label>
+              <button class="primary-button full-width" type="submit" data-i18n="createAndEnter">创建并进入</button>
+            </form>
+            <form class="family-entry-card" id="joinFamilyForm">
+              <span class="family-entry-icon" aria-hidden="true">码</span>
+              <h3 data-i18n="joinFamily">使用邀请码加入</h3>
+              <label><span data-i18n="inviteCode">家庭邀请码</span><input id="joinFamilyCode" type="text" maxlength="12" autocomplete="off" placeholder="例如：ET2026"></label>
+              <button class="secondary-button full-width" type="submit" data-i18n="joinAndEnter">加入家庭</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="family-chat-panel" id="familyChatPanel" hidden aria-labelledby="familyRoomName">
+          <header class="family-chat-header">
+            <div class="family-room-avatars" id="familyRoomAvatars" aria-hidden="true"></div>
+            <span><h2 id="familyRoomName">幸福一家</h2><small id="familyRoomMeta">3位成员 · 2人在线</small></span>
+            <button class="icon-button family-room-menu" id="familyRoomMenuButton" type="button" aria-label="家庭设置">•••</button>
+          </header>
+          <div class="family-room-actions" id="familyRoomActions" hidden>
+            <button class="secondary-button" id="copyFamilyCodeButton" type="button" data-i18n="copyInviteCode">复制邀请码</button>
+            <button class="secondary-button" id="leaveFamilyButton" type="button" data-i18n="leaveFamily">退出家庭</button>
+            <button class="text-button" id="chatLogoutButton" type="button" data-i18n="logoutAccount">退出账号</button>
+          </div>
+          <button class="family-share-trip-button" id="shareTripToFamilyButton" type="button">
+            <span aria-hidden="true">▤</span><span><strong data-i18n="shareCurrentTrip">把当前行程发到群里</strong><small id="familyShareTripHint">成都 · 4天旅行计划</small></span><span aria-hidden="true">›</span>
+          </button>
+          <div class="family-chat-messages" id="familyChatMessages" aria-live="polite"></div>
+          <form class="family-chat-composer" id="familyChatForm">
+            <label class="sr-only" for="familyChatInput" data-i18n="messagePlaceholder">输入消息</label>
+            <input id="familyChatInput" type="text" maxlength="300" autocomplete="off" placeholder="发消息给家人…">
+            <button class="primary-button" type="submit" data-i18n="sendMessage">发送</button>
+          </form>
+        </section>
+      </section>
+
+      <section class="app-view" id="journeyView" data-view="journey" aria-labelledby="journeyTitle">
+        <div class="journey-hero">
+          <span class="live-dot" data-i18n="onTrip">旅途中</span>
+          <h1 id="journeyTitle" data-i18n="journeyTitle">上午好，下一站已准备好</h1>
+          <p id="journeyDate">成都 · 第1天</p>
+        </div>
+
+        <div class="next-stop-card">
+          <div class="next-stop-top">
+            <span class="step-number" data-i18n="nextStop">下一站</span>
+            <span id="nextStopTime">09:20 出发</span>
+          </div>
+          <h2 id="nextStopName">成都大熊猫繁育研究基地</h2>
+          <p id="nextStopRoute">驾车约28分钟 · 入口步行约400米</p>
+          <div class="next-actions">
+            <button class="primary-button" id="navigationButton" type="button" data-i18n="startNavigation">开始导航</button>
+            <button class="secondary-button" id="ticketButton" type="button" data-i18n="viewTickets">查看门票</button>
+          </div>
+        </div>
+
+        <div class="now-grid">
+          <button class="quick-action" id="translationButton" type="button"><span aria-hidden="true">文</span><strong data-i18n="translation">翻译沟通</strong><small data-i18n="translationHelp">文字与常用语</small></button>
+          <button class="quick-action" id="familyButton" type="button"><span aria-hidden="true">聊</span><strong data-i18n="familyChat">家庭群聊</strong><small id="familyStatus">登录后进入家庭</small></button>
+          <button class="quick-action" id="ordersButton" type="button"><span aria-hidden="true">票</span><strong data-i18n="allOrders">全部订单</strong><small data-i18n="ordersSubtitle">酒店、交通、门票</small></button>
+          <button class="quick-action emergency" id="emergencyButton" type="button"><span aria-hidden="true">SOS</span><strong data-i18n="emergency">紧急求助</strong><small data-i18n="emergencySubtitle">家人、领馆与急救</small></button>
+        </div>
+
+        <section class="today-list" aria-labelledby="todayTitle">
+          <div class="section-heading"><h2 id="todayTitle" data-i18n="todayPlan">今天的安排</h2><span id="todayProgress">0/3 已完成</span></div>
+          <div id="todayTasks"></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button class="nav-item active" type="button" data-view-target="planner" aria-current="page"><span aria-hidden="true">＋</span><small data-i18n="navPlan">计划</small></button>
+      <button class="nav-item" type="button" data-view-target="itinerary"><span aria-hidden="true">▤</span><small data-i18n="navItinerary">行程</small></button>
+      <button class="nav-item" type="button" data-view-target="family"><span aria-hidden="true">聊</span><small data-i18n="navFamily">家庭</small></button>
+      <button class="nav-item" type="button" data-view-target="journey"><span aria-hidden="true">◎</span><small data-i18n="navJourney">旅途中</small></button>
+    </nav>
+  </div>
+
+  <div class="loading-layer" id="loadingLayer" hidden aria-live="polite">
+    <div class="loading-card">
+      <div class="loader" aria-hidden="true"></div>
+      <strong id="loadingText">正在理解旅行需求…</strong>
+      <span id="loadingSubtext">正在匹配目的地与同行人</span>
+    </div>
+  </div>
+
+  <dialog id="serviceDialog" class="sheet-dialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
+      <span class="eyebrow" id="serviceDialogEyebrow">酒店服务</span>
+      <h2 id="serviceDialogTitle">选择合适的住宿</h2>
+      <div id="serviceDialogContent"></div>
+      <button class="primary-button full-width" id="serviceConfirmButton" value="default">确认演示预订</button>
+    </form>
+  </dialog>
+
+  <dialog id="translationDialog" class="sheet-dialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
+      <span class="eyebrow">随身翻译</span>
+      <h2>输入想说的话</h2>
+      <label class="dialog-label">中文
+        <textarea id="translationInput" rows="3">请问洗手间在哪里？</textarea>
+      </label>
+      <button class="secondary-button full-width" id="translateNowButton" type="button">立即翻译</button>
+      <div class="translation-result" id="translationResult">Where is the restroom, please?</div>
+      <button class="primary-button full-width" id="speakTranslationButton" type="button">大声播放</button>
+    </form>
+  </dialog>
+
+  <dialog id="familyDialog" class="sheet-dialog family-dialog">
+    <form method="dialog" class="dialog-card family-dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="关闭" data-i18n-aria="close">×</button>
+      <span class="eyebrow" data-i18n="familyCenterEyebrow">亲友同行保障</span>
+      <h2 data-i18n="familyCenterTitle">家庭共享中心</h2>
+
+      <div class="family-summary" aria-live="polite">
+        <div class="family-avatars" id="familyAvatars" aria-hidden="true"></div>
+        <span class="family-summary-copy"><strong id="familySummaryTitle">尚未开启共享</strong><small id="familySummaryMeta">只有受邀成员可以查看</small></span>
+        <span class="status-badge" id="familyShareBadge">未共享</span>
+      </div>
+
+      <section class="family-section" aria-labelledby="familyMembersTitle">
+        <div class="family-section-heading">
+          <h3 id="familyMembersTitle" data-i18n="familyMembers">家庭成员</h3>
+          <span id="familyMemberCount">0</span>
+        </div>
+        <div class="family-member-list" id="familyMemberList"></div>
+        <div class="family-invite-form">
+          <label class="family-name-field"><span data-i18n="familyInviteLabel">姓名或手机号</span><input id="familyMemberInput" type="text" autocomplete="off" maxlength="30" placeholder="例如：妈妈"></label>
+          <label><span data-i18n="familyRelation">关系</span><select id="familyRelationSelect"><option value="family" data-i18n="relationFamily">家人</option><option value="partner" data-i18n="relationPartner">伴侣</option><option value="friend" data-i18n="relationFriend">朋友</option></select></label>
+          <button class="small-button family-add-button" id="addFamilyMemberButton" type="button" data-i18n="addMember">添加</button>
+        </div>
+      </section>
+
+      <fieldset class="family-section family-sharing-options">
+        <legend data-i18n="sharingContent">共享内容</legend>
+        <label class="share-option"><input id="shareItineraryOption" type="checkbox" checked><span><strong data-i18n="shareItinerary">每日行程</strong><small data-i18n="shareItineraryHelp">景点、时间和交通安排</small></span></label>
+        <label class="share-option"><input id="shareLocationOption" type="checkbox"><span><strong data-i18n="shareLocation">实时位置</strong><small data-i18n="shareLocationHelp">演示位置，仅在旅途中更新</small></span></label>
+        <label class="share-option"><input id="shareBookingsOption" type="checkbox" checked><span><strong data-i18n="shareBookings">订单与票券</strong><small data-i18n="shareBookingsHelp">仅查看，不显示支付信息</small></span></label>
+        <label class="share-option"><input id="shareAlertsOption" type="checkbox" checked><span><strong data-i18n="shareAlerts">安全提醒</strong><small data-i18n="shareAlertsHelp">延误、行程变化和紧急通知</small></span></label>
+        <label class="family-duration"><span data-i18n="shareUntil">共享时间</span><select id="familyShareDuration"><option value="trip" data-i18n="untilTripEnd">本次旅行结束</option><option value="24h" data-i18n="until24Hours">未来24小时</option><option value="manual" data-i18n="untilManual">手动关闭</option></select></label>
+      </fieldset>
+
+      <div class="family-quick-actions">
+        <button class="secondary-button" id="familyCheckInButton" type="button" data-i18n="sendCheckIn">我已平安</button>
+        <button class="secondary-button" id="copyFamilyInviteButton" type="button" data-i18n="copyInvite">复制邀请</button>
+      </div>
+      <div class="family-update" id="familyLastUpdate" role="status">还没有发送报平安消息</div>
+      <p class="family-privacy-note"><span aria-hidden="true">盾</span><span data-i18n="familyPrivacyNote">你可以随时暂停共享。演示版不会将位置发送到服务器。</span></p>
+      <button class="primary-button full-width" id="saveFamilySharingButton" type="button" data-i18n="startFamilySharing">开启家庭共享</button>
+      <button class="text-button family-stop-button" id="stopFamilySharingButton" type="button" hidden data-i18n="stopFamilySharing">暂停全部共享</button>
+    </form>
+  </dialog>
+
+  <dialog id="languageDialog" class="sheet-dialog language-dialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="关闭" data-i18n-aria="close">×</button>
+      <span class="eyebrow">Language · 语言</span>
+      <h2 data-i18n="chooseLanguage">选择界面语言</h2>
+      <p class="language-note" data-i18n="languageNote">界面、导航和旅行提醒将使用所选语言。景点专有名称会保留原文。</p>
+      <div class="language-grid" id="languageGrid"></div>
+    </form>
+  </dialog>
+
+  <dialog id="emergencyDialog" class="sheet-dialog emergency-dialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
+      <span class="eyebrow">紧急帮助</span>
+      <h2>你需要联系谁？</h2>
+      <button class="emergency-option" type="button" data-emergency="family"><strong>联系家人</strong><span>发送当前位置与行程</span></button>
+      <button class="emergency-option" type="button" data-emergency="medical"><strong>医疗急救</strong><span id="medicalNumber">拨打 120</span></button>
+      <button class="emergency-option international-essential" type="button" data-emergency="consulate"><strong>领事保护</strong><span>查看目的地领事协助信息</span></button>
+    </form>
+  </dialog>
+
+  <aside class="profile-drawer" id="profileDrawer" hidden aria-labelledby="profileTitle">
+    <button class="drawer-backdrop" id="drawerBackdrop" type="button" aria-label="关闭设置"></button>
+    <div class="drawer-panel">
+      <div class="drawer-heading"><div><span class="eyebrow" data-i18n="servicesSettings">服务与设置</span><h2 id="profileTitle" data-i18n="connectionCenter">连接中心</h2></div><button class="dialog-close" id="drawerClose" type="button" aria-label="关闭" data-i18n-aria="close">×</button></div>
+      <p class="drawer-note" data-i18n="connectionNote">演示版已经走通统一服务接口。配置正式密钥后，可切换到真实查询和预订。</p>
+      <div class="integration-list" id="integrationList"></div>
+      <button class="secondary-button full-width" id="liveModeButton" type="button" data-i18n="configureLive">配置真实服务</button>
+      <button class="secondary-button full-width drawer-language-button" id="drawerLanguageButton" type="button"><span data-i18n="chooseLanguage">选择界面语言</span><strong id="drawerLanguageName">简体中文</strong></button>
+      <div class="setting-row"><span><strong>大字简洁模式</strong><small>放大文字并减少次要信息</small></span><label class="switch"><input id="largeModeSwitch" type="checkbox"><span></span></label></div>
+      <div class="setting-row"><span><strong>旅行通知</strong><small>天气、延误和出发提醒</small></span><label class="switch"><input type="checkbox" checked><span></span></label></div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="map-config.js"></script>
+  <script src="i18n.js"></script>
+  <script src="maps.js"></script>
+  <script src="app.js"></script>
+  <script src="family-chat.js"></script>
+</body>
+</html>
