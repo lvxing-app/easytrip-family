@@ -19,6 +19,34 @@
       },
       bookingAddition: 18000
     },
+    '首尔': {
+      destination: '首尔', countryCode: 'KR', countryName: { zh: '韩国', en: 'South Korea' }, flag: '🇰🇷',
+      currency: 'KRW', timeZone: 'Asia/Seoul', locale: 'ko-KR', language: '한국어', units: 'metric',
+      mapProvider: 'google', mapLabel: 'Google Maps', regionCode: 'kr', estimatedTotal: 3200000,
+      emergency: {
+        police: '112', fire: '119', medical: '119', general: '',
+        sourceUrl: 'https://global.seoul.go.kr/web/news/senw/bordContDetail.do?brd_no=5&lang=EN&mode=W&post_no=497D85F505A500BCE063C0A8A023AF3F'
+      },
+      servicePrices: {
+        transport: [950000, 720000, 1180000], hotel: [230000, 320000, 180000],
+        attraction: [120000, 180000, 85000], local: [150000, 90000, 220000]
+      },
+      bookingAddition: 210000
+    },
+    '曼谷': {
+      destination: '曼谷', countryCode: 'TH', countryName: { zh: '泰国', en: 'Thailand' }, flag: '🇹🇭',
+      currency: 'THB', timeZone: 'Asia/Bangkok', locale: 'th-TH', language: 'ไทย', units: 'metric',
+      mapProvider: 'google', mapLabel: 'Google Maps', regionCode: 'th', estimatedTotal: 85000,
+      emergency: {
+        police: '191', fire: '199', medical: '1669', general: '',
+        sourceUrl: 'https://www.thailand.go.th/useful-information-detail/003_003'
+      },
+      servicePrices: {
+        transport: [22000, 16500, 28000], hotel: [4200, 5800, 3200],
+        attraction: [3800, 5200, 2600], local: [3200, 2400, 4800]
+      },
+      bookingAddition: 4800
+    },
     '巴黎': {
       destination: '巴黎', countryCode: 'FR', countryName: { zh: '法国', en: 'France' }, flag: '🇫🇷',
       currency: 'EUR', timeZone: 'Europe/Paris', locale: 'fr-FR', language: 'Français', units: 'metric',
@@ -32,6 +60,34 @@
         attraction: [120, 160, 90], local: [80, 60, 130]
       },
       bookingAddition: 150
+    },
+    '伦敦': {
+      destination: '伦敦', countryCode: 'GB', countryName: { zh: '英国', en: 'United Kingdom' }, flag: '🇬🇧',
+      currency: 'GBP', timeZone: 'Europe/London', locale: 'en-GB', language: 'English', units: 'metric',
+      mapProvider: 'google', mapLabel: 'Google Maps', regionCode: 'gb', estimatedTotal: 3200,
+      emergency: {
+        police: '999', fire: '999', medical: '999', general: '112',
+        sourceUrl: 'https://www.gov.uk/guidance/999-and-112-the-uks-national-emergency-numbers'
+      },
+      servicePrices: {
+        transport: [980, 760, 1280], hotel: [230, 310, 180],
+        attraction: [140, 190, 95], local: [110, 80, 160]
+      },
+      bookingAddition: 180
+    },
+    '纽约': {
+      destination: '纽约', countryCode: 'US', countryName: { zh: '美国', en: 'United States' }, flag: '🇺🇸',
+      currency: 'USD', timeZone: 'America/New_York', locale: 'en-US', language: 'English', units: 'imperial',
+      mapProvider: 'google', mapLabel: 'Google Maps', regionCode: 'us', estimatedTotal: 4500,
+      emergency: {
+        police: '911', fire: '911', medical: '911', general: '',
+        sourceUrl: 'https://www.911.gov/calling-911/'
+      },
+      servicePrices: {
+        transport: [1280, 980, 1560], hotel: [320, 430, 250],
+        attraction: [180, 240, 130], local: [140, 100, 210]
+      },
+      bookingAddition: 240
     },
     '新加坡': {
       destination: '新加坡', countryCode: 'SG', countryName: { zh: '新加坡', en: 'Singapore' }, flag: '🇸🇬',

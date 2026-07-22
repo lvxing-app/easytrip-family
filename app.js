@@ -113,6 +113,74 @@
           { time: '18:30', name: '滨海湾灯光秀', detail: '地铁直达 · 免费活动', alternatives: ['摩天观景轮', '金沙观景台'] }
         ]
       ]
+    },
+    '首尔': {
+      market: 'international', scope: '韩国城市旅行', currency: 'KRW', total: 3200000,
+      weather: ['18–27°C', '早晚温差较大，建议准备薄外套'], walk: ['约 4.5 km', '约 3.8 km', '约 4.2 km', '约 2.3 km'],
+      medical: '拨打 119', language: '韩语',
+      days: [
+        [
+          { time: '09:00', name: '景福宫', detail: '地铁直达 · 可租借中文语音导览', alternatives: ['昌德宫', '德寿宫'] },
+          { time: '13:30', name: '仁寺洞与传统午餐', detail: '街区平缓 · 安排咖啡休息', alternatives: ['北村韩屋村', '益善洞'] },
+          { time: '18:00', name: '清溪川夜景', detail: '短步行路线 · 可随时返回酒店', alternatives: ['南山首尔塔', '汉江公园'] }
+        ],
+        [
+          { time: '09:30', name: '国立中央博物馆', detail: '室内参观 · 无障碍设施完善', alternatives: ['首尔历史博物馆', '战争纪念馆'] },
+          { time: '14:00', name: '明洞与南山周边', detail: '购物与休息点集中', alternatives: ['弘大街区', '圣水洞'] },
+          { time: '18:30', name: '广藏市场晚餐', detail: '提供低辣和熟食选择', alternatives: ['东大门', '乙支路'] }
+        ]
+      ]
+    },
+    '曼谷': {
+      market: 'international', scope: '泰国家庭旅行', currency: 'THB', total: 85000,
+      weather: ['27–34°C', '炎热潮湿，午后可能有阵雨'], walk: ['约 3.6 km', '约 3.1 km', '约 3.8 km', '约 2.0 km'],
+      medical: '拨打 1669', language: '泰语',
+      days: [
+        [
+          { time: '08:30', name: '大皇宫与玉佛寺', detail: '避开高温时段 · 提醒准备合适着装', alternatives: ['郑王庙', '卧佛寺'] },
+          { time: '13:30', name: '卧佛寺与河畔午餐', detail: '短距离接驳 · 室内休息', alternatives: ['暹罗博物馆', '泰国国家博物馆'] },
+          { time: '18:00', name: '湄南河夜景', detail: '选择有座位的公共船或游船', alternatives: ['河滨夜市', 'ICONSIAM'] }
+        ],
+        [
+          { time: '10:00', name: '吉姆·汤普森之家', detail: '室内外结合 · 英文导览', alternatives: ['曼谷艺术文化中心', '暹罗商圈'] },
+          { time: '14:00', name: '暹罗商圈休闲购物', detail: '空调环境 · 适合长辈休息', alternatives: ['中央世界', 'Terminal 21'] },
+          { time: '18:30', name: '泰式晚餐', detail: '按口味筛选低辣餐厅', alternatives: ['唐人街晚餐', '河畔晚餐'] }
+        ]
+      ]
+    },
+    '伦敦': {
+      market: 'international', scope: '英国文化旅行', currency: 'GBP', total: 3200,
+      weather: ['12–21°C', '天气多变，建议随身携带雨具'], walk: ['约 4.8 km', '约 4.0 km', '约 4.5 km', '约 2.4 km'],
+      medical: '拨打 999', language: '英语',
+      days: [
+        [
+          { time: '09:30', name: '大英博物馆', detail: '预约入场 · 中文重点参观路线', alternatives: ['国家美术馆', '维多利亚与阿尔伯特博物馆'] },
+          { time: '14:00', name: '考文特花园', detail: '餐厅和休息点集中', alternatives: ['摄政街', '苏豪区'] },
+          { time: '18:00', name: '泰晤士河夜景', detail: '可选择游船减少步行', alternatives: ['伦敦眼', '碎片大厦观景台'] }
+        ],
+        [
+          { time: '09:30', name: '威斯敏斯特与议会广场', detail: '公共交通直达 · 平缓路线', alternatives: ['圣保罗大教堂', '伦敦塔'] },
+          { time: '13:30', name: '海德公园', detail: '按体力选择短线散步', alternatives: ['肯辛顿花园', '圣詹姆斯公园'] },
+          { time: '18:30', name: '西区晚餐与演出', detail: '预留提前退场和返程方案', alternatives: ['南岸晚餐', '考文特花园演出'] }
+        ]
+      ]
+    },
+    '纽约': {
+      market: 'international', scope: '美国城市旅行', currency: 'USD', total: 4500,
+      weather: ['16–26°C', '昼夜温差明显，建议分层穿衣'], walk: ['约 5.0 km', '约 4.3 km', '约 4.7 km', '约 2.6 km'],
+      medical: '拨打 911', language: '英语',
+      days: [
+        [
+          { time: '09:30', name: '中央公园', detail: '选择平缓短线 · 多处可休息', alternatives: ['高线公园', '布莱恩特公园'] },
+          { time: '13:30', name: '大都会艺术博物馆', detail: '重点展厅路线 · 支持电梯', alternatives: ['现代艺术博物馆', '美国自然历史博物馆'] },
+          { time: '18:30', name: '时代广场', detail: '安排短时停留并避开拥挤路段', alternatives: ['洛克菲勒中心', '百老汇演出'] }
+        ],
+        [
+          { time: '09:00', name: '自由女神像与港湾', detail: '提前预约 · 预留安检时间', alternatives: ['史泰登岛渡轮', '布鲁克林大桥公园'] },
+          { time: '14:00', name: '九一一纪念馆与下城', detail: '室内参观 · 交通便利', alternatives: ['华尔街', '海港区'] },
+          { time: '18:30', name: '布鲁克林夜景', detail: '优先选择少步行观景点', alternatives: ['帝国大厦', '哈德逊河畔'] }
+        ]
+      ]
     }
   };
 
@@ -124,14 +192,11 @@
   ];
 
   const integrationDefinitions = [
-    { icon: '图', name: '地图与路线', domestic: '高德地图接口', international: 'Google Maps 接口' },
-    { icon: '住', name: '酒店库存', domestic: '携程酒店接口', international: 'Booking / 酒店聚合接口' },
-    { icon: '行', name: '交通票务', domestic: '12306 / 航班聚合', international: '航司与 GDS 聚合接口' },
-    { icon: '票', name: '景点门票', domestic: '景区票务聚合接口', international: '全球活动票务接口' },
-    { icon: '天', name: '实时天气', domestic: '国内天气接口', international: '全球天气接口' },
-    { icon: '译', name: '翻译与语音', domestic: '文字与语音能力', international: '多语言翻译接口' },
-    { icon: '汇', name: '汇率与支付', domestic: '人民币结算', international: '实时汇率与多币种' },
-    { icon: '安', name: '安全与求助', domestic: '家人及急救信息', international: '领事、保险与急救信息' }
+    { kind: 'map', icon: '图', nameKey: 'integrationMaps', domesticKey: 'integrationAmap', internationalKey: 'integrationGoogle' },
+    { kind: 'family', icon: '家', nameKey: 'integrationFamily', domesticKey: 'integrationFamilyDetail', internationalKey: 'integrationFamilyDetail' },
+    { kind: 'offline', icon: '离', nameKey: 'integrationOffline', domesticKey: 'integrationOfflineDetail', internationalKey: 'integrationOfflineDetail' },
+    { kind: 'language', icon: '译', nameKey: 'integrationLanguage', domesticKey: 'integrationLanguageDetail', internationalKey: 'integrationLanguageDetail' },
+    { kind: 'booking', icon: '订', nameKey: 'integrationBooking', domesticKey: 'integrationBookingDetail', internationalKey: 'integrationBookingDetail' }
   ];
 
   const state = {
@@ -158,7 +223,9 @@
     },
     currentService: null,
     toastTimer: null,
-    promptTouched: false
+    promptTouched: false,
+    offlineSavedAt: '',
+    offlinePack: null
   };
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -204,13 +271,35 @@
     } catch (error) { /* The demo still works without persistence. */ }
   }
 
+  function loadOfflineState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('easytrip-offline-pack') || 'null');
+      if (saved && saved.version === 1 && typeof saved.savedAt === 'string') {
+        state.offlineSavedAt = saved.savedAt;
+        state.offlinePack = saved;
+      }
+    } catch (error) { /* A damaged offline package should not stop the app. */ }
+  }
+
   const destinationNames = {
     '成都': { en: 'Chengdu', ja: '成都', ko: '청두', th: 'เฉิงตู', ar: 'تشنغدو', ru: 'Чэнду' },
     '上海': { en: 'Shanghai', ja: '上海', ko: '상하이', th: 'เซี่ยงไฮ้', ar: 'شنغهاي', ru: 'Шанхай' },
     '北京': { en: 'Beijing', ja: '北京', ko: '베이징', th: 'ปักกิ่ง', ar: 'بكين', ru: 'Пекин' },
     '东京': { en: 'Tokyo', ja: '東京', ko: '도쿄', th: 'โตเกียว', ar: 'طوكيو', ru: 'Токио' },
+    '首尔': { en: 'Seoul', ja: 'ソウル', ko: '서울', th: 'โซล', ar: 'سيول', ru: 'Сеул' },
+    '曼谷': { en: 'Bangkok', ja: 'バンコク', ko: '방콕', th: 'กรุงเทพฯ', ar: 'بانكوك', ru: 'Бангкок' },
     '巴黎': { en: 'Paris', ja: 'パリ', ko: '파리', th: 'ปารีส', ar: 'باريس', ru: 'Париж' },
+    '伦敦': { en: 'London', ja: 'ロンドン', ko: '런던', th: 'ลอนดอน', ar: 'لندن', ru: 'Лондон' },
+    '纽约': { en: 'New York', ja: 'ニューヨーク', ko: '뉴욕', th: 'นิวยอร์ก', ar: 'نيويورك', ru: 'Нью-Йорк' },
     '新加坡': { en: 'Singapore', ja: 'シンガポール', ko: '싱가포르', th: 'สิงคโปร์', ar: 'سنغافورة', ru: 'Сингапур' }
+  };
+
+  const destinationAliases = {
+    '成都': ['成都', 'chengdu'], '上海': ['上海', 'shanghai'], '北京': ['北京', 'beijing'],
+    '东京': ['东京', '東京', 'tokyo', '도쿄'], '首尔': ['首尔', '首爾', 'seoul', '서울'],
+    '曼谷': ['曼谷', 'bangkok', 'กรุงเทพ'], '巴黎': ['巴黎', 'paris'],
+    '伦敦': ['伦敦', '倫敦', 'london'], '纽约': ['纽约', '紐約', 'new york', 'nyc'],
+    '新加坡': ['新加坡', 'singapore']
   };
 
   function localizedDestination(name) {
@@ -290,8 +379,9 @@
   }
 
   function inferDestination(prompt, market) {
-    const names = Object.keys(destinations);
-    const found = names.find(name => prompt.includes(name));
+    const normalizedPrompt = String(prompt || '').toLocaleLowerCase();
+    const found = Object.keys(destinations).find(name => destinationAliases[name]
+      .some(alias => normalizedPrompt.includes(alias.toLocaleLowerCase())));
     if (found && destinations[found].market === market) return found;
     return state.destination && destinations[state.destination].market === market
       ? state.destination
@@ -628,15 +718,70 @@
     `).join('')}</div><p class="secondary-copy">演示预订不会产生真实订单或费用。</p>`;
   }
 
+  async function saveOfflinePack() {
+    ensurePlan();
+    const savedAt = new Date().toISOString();
+    const offlinePack = {
+      version: 1,
+      savedAt,
+      locale: I18n.locale,
+      plan: state.plan,
+      booked: Array.from(state.booked),
+      emergency: state.plan.region.emergency
+    };
+
+    try {
+      localStorage.setItem('easytrip-offline-pack', JSON.stringify(offlinePack));
+      state.offlineSavedAt = savedAt;
+      if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+        const registration = await navigator.serviceWorker.getRegistration();
+        if (registration) await registration.update().catch(() => {});
+      }
+      renderIntegrations();
+      showToast(t('offlineSaved'));
+    } catch (error) {
+      showToast(t('offlineSaveFailed'));
+    }
+  }
+
+  function integrationStatus(kind, international) {
+    const mapConfig = window.EasyTripMapConfig || {};
+    const mapKeyReady = international
+      ? Boolean(mapConfig.google && mapConfig.google.apiKey)
+      : Boolean(mapConfig.amap && mapConfig.amap.key);
+
+    if (kind === 'map') {
+      if (mapKeyReady) return { label: t('statusLive'), className: 'live' };
+      if (mapConfig.fallback && mapConfig.fallback.enabled) return { label: t('statusPreviewReady'), className: 'ready' };
+      return { label: t('statusNeedsSetup'), className: 'needs-setup' };
+    }
+    if (kind === 'family') {
+      const cloudReady = Boolean(window.EasyTripFamilyCloud && window.EasyTripFamilyCloud.isConfigured());
+      return cloudReady
+        ? { label: t('statusCloudReady'), className: 'live' }
+        : { label: t('statusLocalReady'), className: 'ready' };
+    }
+    if (kind === 'offline') {
+      return state.offlineSavedAt
+        ? { label: t('statusSaved'), className: 'live' }
+        : { label: t('statusAvailable'), className: 'ready' };
+    }
+    if (kind === 'language') return { label: t('statusReady'), className: 'live' };
+    return { label: t('statusDemoOnly'), className: 'needs-setup' };
+  }
+
   function renderIntegrations() {
     const international = state.market === 'international';
-    $('#integrationList').innerHTML = integrationDefinitions.map(item => `
+    $('#integrationList').innerHTML = integrationDefinitions.map(item => {
+      const status = integrationStatus(item.kind, international);
+      return `
       <div class="integration-row">
         <span class="service-icon" aria-hidden="true">${item.icon}</span>
-        <span><strong>${item.name}</strong><small>${international ? item.international : item.domestic}</small></span>
-        <span class="status-badge">模拟已连接</span>
+        <span><strong>${escapeHtml(t(item.nameKey))}</strong><small>${escapeHtml(t(international ? item.internationalKey : item.domesticKey))}</small></span>
+        <span class="status-badge ${status.className}">${escapeHtml(status.label)}</span>
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
 
   function renderJourney() {
@@ -948,7 +1093,7 @@
       showToast(t('weatherUpdated'));
     });
 
-    $('#downloadOfflineButton').addEventListener('click', () => showToast(t('offlineSaved')));
+    $('#downloadOfflineButton').addEventListener('click', saveOfflinePack);
     $('#shareButton').addEventListener('click', () => openFamilyChat({ shareTrip: true }));
 
     $('#navigationButton').addEventListener('click', event => {
@@ -1023,10 +1168,12 @@
 
     $('#accessibilityButton').addEventListener('click', () => toggleLargeMode(!document.body.classList.contains('large-mode')));
     $('#largeModeSwitch').addEventListener('change', event => toggleLargeMode(event.target.checked));
-    $('#profileButton').addEventListener('click', () => toggleDrawer(true));
+    $('#profileButton').addEventListener('click', () => { renderIntegrations(); toggleDrawer(true); });
     $('#drawerClose').addEventListener('click', () => toggleDrawer(false));
     $('#drawerBackdrop').addEventListener('click', () => toggleDrawer(false));
-    $('#liveModeButton').addEventListener('click', () => showToast('切换真实服务需要配置各平台 API 密钥与商务授权'));
+    $('#liveModeButton').addEventListener('click', () => {
+      window.open('https://github.com/lvxing-app/easytrip-family#当前连接方式', '_blank', 'noopener,noreferrer');
+    });
 
     $('#voiceButton').addEventListener('click', () => {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1064,15 +1211,42 @@
     toast: showToast
   };
 
+  function restoreOfflinePlan() {
+    const saved = state.offlinePack;
+    const plan = saved && saved.plan;
+    if (!plan || !destinations[plan.destination] || !['domestic', 'international'].includes(plan.market) || !Array.isArray(plan.days) || !plan.days.length) return false;
+
+    state.destination = plan.destination;
+    state.days = plan.days.length;
+    state.plan = { ...plan, region: Regional.get(plan.destination) };
+    state.booked = new Set(Array.isArray(saved.booked) ? saved.booked.filter(type => serviceDefinitions.some(service => service.type === type)) : []);
+    setMarket(plan.market, false);
+    selectDestination(plan.destination, false);
+
+    if (typeof plan.prompt === 'string' && plan.prompt) $('#tripPrompt').value = plan.prompt;
+    if (plan.startDate) $('#startDate').value = plan.startDate;
+    if (plan.travelers) $('#travelers').value = plan.travelers;
+    if (plan.budget) $('#budget').value = plan.budget;
+    if (state.days) $('#tripDays').value = String(state.days);
+    const paceValue = ['relaxed', 'balanced', 'packed'].includes(plan.pace) ? plan.pace : 'relaxed';
+    const pace = $(`input[name="pace"][value="${paceValue}"]`);
+    if (pace) pace.checked = true;
+    $$('input[name="interest"]').forEach(input => { input.checked = Array.isArray(plan.interests) && plan.interests.includes(input.value); });
+    return true;
+  }
+
   function initialize() {
     I18n.init();
     loadFamilyState();
-    setMarket('domestic', true);
-    state.plan = buildPlan(getContext());
+    loadOfflineState();
+    if (!restoreOfflinePlan()) {
+      setMarket('domestic', true);
+      state.plan = buildPlan(getContext());
+    }
     bindEvents();
     renderPlan();
     renderLanguageGrid();
-    setMarket('domestic', false);
+    setMarket(state.plan.market, false);
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
     }

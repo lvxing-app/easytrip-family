@@ -1,4 +1,4 @@
-const CACHE_NAME = 'easytrip-demo-v10';
+const CACHE_NAME = 'easytrip-demo-v11';
 const APP_FILES = [
   './',
   './index.html',

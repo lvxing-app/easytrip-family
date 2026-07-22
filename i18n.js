@@ -112,6 +112,22 @@
   });
 
   Object.assign(en, {
+    viewSetupGuide: 'View production setup guide', integrationMaps: 'Maps & routes', integrationAmap: 'AMap in China · OSM preview fallback', integrationGoogle: 'Google Maps overseas · OSM preview fallback',
+    integrationFamily: 'Family chat', integrationFamilyDetail: 'Account, family room, messages and shared trips', integrationOffline: 'Offline travel pack', integrationOfflineDetail: 'Itinerary, bookings and emergency details on this device',
+    integrationLanguage: 'Languages & voice', integrationLanguageDetail: '12 interface languages with RTL support', integrationBooking: 'Live bookings', integrationBookingDetail: 'Supplier contracts and a secure server are required',
+    statusLive: 'Live', statusPreviewReady: 'Preview ready', statusNeedsSetup: 'Setup needed', statusCloudReady: 'Cloud ready', statusLocalReady: 'Local ready', statusSaved: 'Saved', statusAvailable: 'Available', statusReady: 'Ready', statusDemoOnly: 'Demo only',
+    offlineSaveFailed: 'The offline pack could not be saved on this device'
+  });
+
+  Object.assign(translations['zh-CN'], {
+    viewSetupGuide: '查看正式服务接入说明', integrationMaps: '地图与路线', integrationAmap: '中国使用高德 · 无密钥时显示路线预览', integrationGoogle: '海外使用 Google Maps · 无密钥时显示路线预览',
+    integrationFamily: '家庭群聊', integrationFamilyDetail: '账号、家庭房间、消息和行程共享', integrationOffline: '离线旅行包', integrationOfflineDetail: '行程、订单选择和紧急信息保存在本机',
+    integrationLanguage: '多语言与语音', integrationLanguageDetail: '12种界面语言并支持阿拉伯语布局', integrationBooking: '真实预订', integrationBookingDetail: '需要供应商商务授权和安全后端',
+    statusLive: '实时已连接', statusPreviewReady: '预览可用', statusNeedsSetup: '需要配置', statusCloudReady: '云端可用', statusLocalReady: '本机可用', statusSaved: '已保存', statusAvailable: '可以使用', statusReady: '已就绪', statusDemoOnly: '仅演示',
+    offlineSaveFailed: '当前设备无法保存离线旅行包'
+  });
+
+  Object.assign(en, {
     localProfile: '{country} · {currency} · {timeZone} · {map}', localEstimate: 'Demo estimate in local currency',
     emergencyHelp: 'Emergency help', emergencyWho: 'Who do you need to contact?', emergencyRegion: 'Destination: {country}',
     contactFamily: 'Contact family', contactFamilyHelp: 'Share your location and itinerary', generalEmergency: 'General emergency',
