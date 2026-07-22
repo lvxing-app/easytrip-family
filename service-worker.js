@@ -1,12 +1,15 @@
-const CACHE_NAME = 'easytrip-demo-v8';
+const CACHE_NAME = 'easytrip-demo-v10';
 const APP_FILES = [
   './',
   './index.html',
   './styles.css',
   './map-config.js',
+  './cloud-config.js',
   './i18n.js',
+  './region-config.js',
   './maps.js',
   './app.js',
+  './family-cloud.js',
   './family-chat.js',
   './manifest.webmanifest',
   './assets/app-icon.svg'

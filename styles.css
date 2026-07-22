@@ -274,6 +274,7 @@ input[type="date"], select, .dialog-label textarea {
 .trip-heading { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 12px; padding: 10px 0 4px; }
 .trip-heading h1 { font-size: 26px; margin-top: 5px; }
 .trip-heading p { font-size: 13px; }
+.trip-heading .regional-context { margin-top: 6px; color: var(--primary-dark); font-weight: 700; }
 .back-button { width: 42px; height: 42px; border: 0; border-radius: 14px; background: var(--surface); font-size: 28px; line-height: 1; cursor: pointer; }
 .share-button { min-height: 42px; padding: 8px 12px; background: var(--brand-soft); color: var(--brand-dark); }
 .trip-tabs { grid-template-columns: repeat(3, 1fr); margin-top: 18px; }
@@ -374,6 +375,10 @@ body.market-international .international-essential { display: flex !important; }
 .family-auth-switch button { min-height: 42px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); cursor: pointer; font-weight: 700; }
 .family-auth-switch button.active { background: var(--surface); color: var(--ink); box-shadow: 0 3px 12px rgba(22,50,47,.08); }
 .family-demo-note { margin: 12px 0; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--surface-soft); color: var(--muted); font-size: 12px; }
+.family-backend-status { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 9px; margin: 12px 0; }
+.family-backend-status .family-demo-note { margin: 0; }
+.family-backend-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 3px 8px; border-radius: 999px; background: var(--surface-soft); color: var(--muted); font-size: 10px; font-weight: 800; white-space: nowrap; }
+.family-backend-badge.cloud { background: var(--brand-soft); color: var(--brand-dark); }
 .family-account-form { display: grid; gap: 12px; }
 .family-account-form > label, .family-code-row label, .family-entry-card label { display: grid; gap: 5px; color: var(--muted); font-size: 12px; }
 .family-account-form input, .family-entry-card input, .family-chat-composer input { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 10px 12px; }
@@ -558,8 +563,10 @@ body.market-international .international-essential { display: flex !important; }
 .option-card span small { color: var(--muted); }
 .option-card input:checked + span { border-color: var(--brand); background: var(--brand-soft); }
 .option-card input:focus-visible + span { outline: 3px solid rgba(22,122,107,.25); }
-.emergency-option { width: 100%; min-height: 66px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); padding: 12px 14px; margin: 5px 0; text-align: left; cursor: pointer; display: grid; }
+.emergency-option { width: 100%; min-height: 66px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-soft); padding: 12px 14px; margin: 5px 0; text-align: left; cursor: pointer; display: grid; color: inherit; text-decoration: none; box-sizing: border-box; }
 .emergency-option span { color: var(--muted); }
+.emergency-region { margin: 0 0 10px; color: var(--muted); }
+.emergency-source { display: inline-block; margin-top: 10px; color: var(--primary-dark); font-weight: 700; }
 
 .profile-drawer { position: fixed; inset: 0; z-index: 45; display: flex; justify-content: center; align-items: stretch; }
 .drawer-backdrop { position: absolute; inset: 0; border: 0; background: rgba(16,42,38,.48); cursor: pointer; }

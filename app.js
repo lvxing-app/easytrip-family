@@ -59,7 +59,7 @@
       ]
     },
     '东京': {
-      market: 'international', scope: '日本自由行', currency: '¥', total: 13800,
+      market: 'international', scope: '日本自由行', currency: 'JPY', total: 300000,
       weather: ['20–27°C', '局部阵雨，建议带伞'], walk: ['约 5.2 km', '约 4.6 km', '约 4.1 km', '约 2.5 km'],
       medical: '拨打 119', language: '日语',
       days: [
@@ -86,7 +86,7 @@
       ]
     },
     '巴黎': {
-      market: 'international', scope: '法国文化旅行', currency: '¥', total: 19600,
+      market: 'international', scope: '法国文化旅行', currency: 'EUR', total: 2500,
       weather: ['14–22°C', '多云，偶有小雨'], walk: ['约 5.0 km', '约 4.3 km', '约 4.8 km', '约 2.7 km'],
       medical: '拨打 112', language: '法语',
       days: [
@@ -103,7 +103,7 @@
       ]
     },
     '新加坡': {
-      market: 'international', scope: '新加坡家庭旅行', currency: '¥', total: 11200,
+      market: 'international', scope: '新加坡家庭旅行', currency: 'SGD', total: 2100,
       weather: ['26–32°C', '炎热有阵雨'], walk: ['约 4.1 km', '约 3.8 km', '约 4.0 km', '约 2.4 km'],
       medical: '拨打 995', language: '英语',
       days: [
@@ -165,7 +165,13 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const delay = (ms) => new Promise(resolve => window.setTimeout(resolve, ms));
   const I18n = window.EasyTripI18n;
+  const Regional = window.EasyTripRegional;
   const t = (key, variables) => I18n.t(key, variables);
+
+  function formatMoney(amount, plan = state.plan) {
+    const currency = plan && plan.region ? plan.region.currency : (plan && plan.currency) || 'CNY';
+    return Regional.formatMoney(amount, currency, I18n.locale);
+  }
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>'"]/g, character => ({
@@ -243,34 +249,36 @@
     async search(type, plan) {
       await delay(260);
       const overseas = plan.market === 'international';
+      const prices = plan.region.servicePrices[type];
+      const money = amount => formatMoney(amount, plan);
       const options = {
         transport: overseas ? [
-          ['直飞往返 · 含托运行李', '¥4,280/人 · 时间更省心'],
-          ['一次中转 · 含托运行李', '¥3,180/人 · 价格更低'],
-          ['灵活退改直飞', '¥5,120/人 · 适合家庭出行']
+          ['直飞往返 · 含托运行李', `${money(prices[0])}/人 · 演示估算`],
+          ['一次中转 · 含托运行李', `${money(prices[1])}/人 · 演示估算`],
+          ['灵活退改直飞', `${money(prices[2])}/人 · 演示估算`]
         ] : [
-          ['高铁往返 · 一等座', '¥1,080/人 · 车站出发'],
-          ['直飞往返 · 经济舱', '¥1,360/人 · 含接送建议'],
-          ['高铁往返 · 二等座', '¥720/人 · 性价比优先']
+          ['高铁往返 · 一等座', `${money(prices[0])}/人 · 车站出发`],
+          ['直飞往返 · 经济舱', `${money(prices[1])}/人 · 含接送建议`],
+          ['高铁往返 · 二等座', `${money(prices[2])}/人 · 性价比优先`]
         ],
         hotel: [
-          ['市中心舒适酒店', overseas ? '¥980/晚 · 近地铁 · 中文服务' : '¥560/晚 · 近地铁 · 含早餐'],
-          ['安静家庭房', overseas ? '¥1,260/晚 · 可加床 · 电梯房' : '¥680/晚 · 可加床 · 无障碍'],
-          ['交通枢纽酒店', overseas ? '¥820/晚 · 换乘方便' : '¥460/晚 · 接送方便']
+          ['市中心舒适酒店', `${money(prices[0])}/晚 · 近公共交通`],
+          ['安静家庭房', `${money(prices[1])}/晚 · 可加床 · 电梯房`],
+          ['交通枢纽酒店', `${money(prices[2])}/晚 · 换乘方便`]
         ],
         attraction: [
-          ['热门景点预约组合', overseas ? '¥680/人 · 中文凭证' : '¥220/人 · 分时预约'],
-          ['重点景点快速入场', overseas ? '¥860/人 · 减少排队' : '¥320/人 · 优先时段'],
-          ['基础门票组合', overseas ? '¥480/人 · 自由调整' : '¥160/人 · 经济选择']
+          ['热门景点预约组合', `${money(prices[0])}/人 · 数字凭证`],
+          ['重点景点快速入场', `${money(prices[1])}/人 · 减少排队`],
+          ['基础门票组合', `${money(prices[2])}/人 · 自由调整`]
         ],
         local: overseas ? [
-          ['机场接送 + 7日上网卡', '¥520/人 · 到达即用'],
-          ['交通卡 + 旅行保险', '¥380/人 · 含基础保障'],
-          ['全套安心服务', '¥780/人 · 接送、上网、保险']
+          ['机场接送 + 7日上网卡', `${money(prices[0])}/人 · 到达即用`],
+          ['交通卡 + 旅行保险', `${money(prices[1])}/人 · 含基础保障`],
+          ['全套安心服务', `${money(prices[2])}/人 · 接送、上网、保险`]
         ] : [
-          ['机场/车站接送', '¥168/程 · 车型适合4人'],
-          ['市内交通与保险', '¥120/人 · 出行更安心'],
-          ['全程用车服务', '¥1,280/天 · 少走路优先']
+          ['机场/车站接送', `${money(prices[0])}/程 · 车型适合4人`],
+          ['市内交通与保险', `${money(prices[1])}/人 · 出行更安心`],
+          ['全程用车服务', `${money(prices[2])}/天 · 少走路优先`]
         ]
       };
       return options[type] || [];
@@ -319,6 +327,7 @@
 
   function buildPlan(context) {
     const base = destinations[context.destination];
+    const region = Regional.get(context.destination);
     const days = [];
     for (let index = 0; index < context.days; index += 1) {
       const source = base.days[index % base.days.length];
@@ -327,6 +336,11 @@
     return {
       ...context,
       ...base,
+      region,
+      currency: region.currency,
+      total: region.estimatedTotal,
+      medical: `拨打 ${region.emergency.medical}`,
+      language: region.language,
       days,
       title: context.destination
     };
@@ -459,6 +473,32 @@
     $$('[data-trip-panel-content]').forEach(content => content.classList.toggle('active', content.dataset.tripPanelContent === panel));
   }
 
+  function renderRegionalContext(plan) {
+    const region = plan.region;
+    const country = I18n.locale === 'zh-CN' ? region.countryName.zh : region.countryName.en;
+    $('#regionalContext').textContent = `${region.flag} ${t('localProfile', {
+      country, currency: region.currency, timeZone: region.timeZone, map: region.mapLabel
+    })}`;
+    $('#emergencyRegion').textContent = t('emergencyRegion', { country });
+
+    const callTargets = [
+      ['medicalCall', 'medicalNumber', region.emergency.medical],
+      ['policeCall', 'policeNumber', region.emergency.police],
+      ['fireCall', 'fireNumber', region.emergency.fire]
+    ];
+    callTargets.forEach(([linkId, numberId, number]) => {
+      $(`#${linkId}`).href = `tel:${number}`;
+      $(`#${numberId}`).textContent = t('callNumber', { number });
+    });
+    const generalLink = $('#generalEmergencyCall');
+    generalLink.hidden = !region.emergency.general;
+    if (region.emergency.general) {
+      generalLink.href = `tel:${region.emergency.general}`;
+      $('#generalEmergencyNumber').textContent = t('callNumber', { number: region.emergency.general });
+    }
+    $('#emergencyOfficialSource').href = region.emergency.sourceUrl;
+  }
+
   function renderPlan() {
     ensurePlan();
     const plan = state.plan;
@@ -471,17 +511,17 @@
     $('#tripScope').textContent = t(plan.market === 'international' ? 'scopeInternational' : 'scopeDomestic');
     $('#tripTitle').textContent = t('tripTitle', { destination: destinationLabel, days: plan.days.length, pace: paceLabel });
     $('#tripMeta').textContent = t('tripMeta', { date: formatFullDate(plan.startDate), people: peopleLabel, budget: budgetLabel });
+    renderRegionalContext(plan);
     $('#shareButton').textContent = t('share');
     $('#documentHint').textContent = I18n.locale === 'zh-CN'
       ? (plan.market === 'international' ? '同行人的护照与签证材料' : '同行人的身份证')
       : (plan.market === 'international' ? 'Passports and visa documents for all travelers' : 'Identity documents for all travelers');
-    $('#medicalNumber').textContent = plan.medical;
     $('#weatherTemp').textContent = plan.weather[0];
     $('#weatherText').textContent = I18n.locale === 'zh-CN' ? plan.weather[1] : t('weatherSuitable');
     const walkLabel = $('#walkDistance').nextElementSibling;
     if (walkLabel) walkLabel.textContent = t('todayWalk');
     const bookingLabels = $$('.booking-summary span');
-    if (bookingLabels[0]) bookingLabels[0].textContent = t('estimatedTotal');
+    if (bookingLabels[0]) bookingLabels[0].textContent = `${t('estimatedTotal')} · ${t('localEstimate')}`;
     if (bookingLabels[1]) bookingLabels[1].textContent = t('bookingAutoAdd');
     renderDays();
     renderServices();
@@ -527,26 +567,30 @@
       destination: state.plan.destination,
       activities: state.plan.days[state.currentDay],
       day: state.currentDay,
-      locale: I18n.locale
+      locale: I18n.locale,
+      mapProvider: state.plan.region.mapProvider,
+      regionCode: state.plan.region.regionCode
     });
   }
 
   function getServiceCopy(type) {
     const overseas = state.plan.market === 'international';
+    const prices = state.plan.region.servicePrices[type];
+    const from = formatMoney(Math.min(...prices));
     if (I18n.locale !== 'zh-CN') {
       const globalCopies = {
-        transport: overseas ? ['Direct flight · checked baggage', 'From ¥4,280/person'] : ['Rail and flights compared', 'From ¥720/person'],
-        hotel: overseas ? ['Central · near transit · language support', 'From ¥980/night'] : ['Central · breakfast · less walking', 'From ¥560/night'],
-        attraction: overseas ? ['Digital voucher · flexible changes', 'From ¥680/person'] : ['Popular time slots held', 'From ¥220/person'],
-        local: overseas ? ['Transfer · eSIM · insurance', 'From ¥520/person'] : ['Transfer · car · travel cover', 'From ¥168']
+        transport: overseas ? ['Flight options · checked baggage', `From ${from}/person · demo`] : ['Rail and flights compared', `From ${from}/person · demo`],
+        hotel: overseas ? ['Central · near transit · language support', `From ${from}/night · demo`] : ['Central · breakfast · less walking', `From ${from}/night · demo`],
+        attraction: overseas ? ['Digital voucher · flexible changes', `From ${from}/person · demo`] : ['Popular time slots held', `From ${from}/person · demo`],
+        local: overseas ? ['Transfer · eSIM · insurance', `From ${from}/person · demo`] : ['Transfer · car · travel cover', `From ${from} · demo`]
       };
       return globalCopies[type];
     }
     const copies = {
-      transport: overseas ? ['直飞优先 · 含托运行李', '约 ¥4,280/人'] : ['高铁与航班已比较', '约 ¥720/人起'],
-      hotel: overseas ? ['市中心 · 中文服务 · 近地铁', '约 ¥980/晚'] : ['市中心 · 含早餐 · 少步行', '约 ¥560/晚'],
-      attraction: overseas ? ['中文凭证 · 可退改', '约 ¥680/人'] : ['热门时段已预留', '约 ¥220/人'],
-      local: overseas ? ['接送 · 上网卡 · 保险', '约 ¥520/人'] : ['接送 · 用车 · 旅行保障', '约 ¥168起']
+      transport: overseas ? ['航班方案 · 含托运行李', `${from}/人起 · 演示估算`] : ['高铁与航班已比较', `${from}/人起 · 演示估算`],
+      hotel: overseas ? ['市中心 · 近公共交通', `${from}/晚起 · 演示估算`] : ['市中心 · 含早餐 · 少步行', `${from}/晚起 · 演示估算`],
+      attraction: overseas ? ['数字凭证 · 可退改', `${from}/人起 · 演示估算`] : ['热门时段已预留', `${from}/人起 · 演示估算`],
+      local: overseas ? ['接送 · 上网卡 · 保险', `${from}/人起 · 演示估算`] : ['接送 · 用车 · 旅行保障', `${from}起 · 演示估算`]
     };
     return copies[type];
   }
@@ -564,8 +608,8 @@
       `;
     }).join('');
     $('#bookingSaved').textContent = t('lockedCount', { count: state.booked.size });
-    const addition = state.booked.size * (state.plan.market === 'international' ? 860 : 260);
-    $('#bookingTotal').textContent = `${state.plan.currency}${(state.plan.total + addition).toLocaleString(I18n.locale)}`;
+    const addition = state.booked.size * state.plan.region.bookingAddition;
+    $('#bookingTotal').textContent = formatMoney(state.plan.total + addition);
   }
 
   async function openService(type) {
@@ -725,7 +769,9 @@
 
   async function copyFamilyInvite() {
     ensurePlan();
-    const text = `${t('familyInviteMessage', { destination: localizedDestination(state.plan.destination) })} https://easytrip.demo/family/ET-${String(Date.now()).slice(-6)}`;
+    const inviteUrl = new URL('./', window.location.href);
+    inviteUrl.searchParams.set('family', `ET-${String(Date.now()).slice(-6)}`);
+    const text = `${t('familyInviteMessage', { destination: localizedDestination(state.plan.destination) })} ${inviteUrl.toString()}`;
     try { await navigator.clipboard.writeText(text); } catch (error) { /* Clipboard can be unavailable in local previews. */ }
     showToast(t('familyInviteCopied'));
   }
@@ -961,9 +1007,12 @@
 
     $('#emergencyButton').addEventListener('click', () => $('#emergencyDialog').showModal());
     $$('.emergency-option').forEach(button => button.addEventListener('click', () => {
+      if (button.tagName === 'A') {
+        $('#emergencyDialog').close();
+        return;
+      }
       const messages = {
         family: '已准备向紧急联系人发送当前位置',
-        medical: `医疗急救演示：${state.plan.medical}`,
         consulate: '已打开领事保护与目的地紧急信息演示'
       };
       $('#emergencyDialog').close();
@@ -1007,6 +1056,7 @@
     showView,
     openFamilySettings: openFamilyDialog,
     getPlan() { ensurePlan(); return state.plan; },
+    getRegion() { ensurePlan(); return state.plan.region; },
     destinationLabel() { ensurePlan(); return localizedDestination(state.plan.destination); },
     formatDate,
     t,

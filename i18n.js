@@ -111,6 +111,22 @@
     mapLoadFailed: '在线地图加载失败，仍可使用外部导航'
   });
 
+  Object.assign(en, {
+    localProfile: '{country} · {currency} · {timeZone} · {map}', localEstimate: 'Demo estimate in local currency',
+    emergencyHelp: 'Emergency help', emergencyWho: 'Who do you need to contact?', emergencyRegion: 'Destination: {country}',
+    contactFamily: 'Contact family', contactFamilyHelp: 'Share your location and itinerary', generalEmergency: 'General emergency',
+    medicalEmergency: 'Medical emergency', policeEmergency: 'Police', fireEmergency: 'Fire & rescue', callNumber: 'Call {number}',
+    consularHelp: 'Consular assistance', consularHelpDetail: 'View help for your destination', officialEmergencySource: 'View official local number source'
+  });
+
+  Object.assign(translations['zh-CN'], {
+    localProfile: '{country} · {currency} · {timeZone} · {map}', localEstimate: '当地货币演示估算',
+    emergencyHelp: '紧急帮助', emergencyWho: '你需要联系谁？', emergencyRegion: '当前目的地：{country}',
+    contactFamily: '联系家人', contactFamilyHelp: '发送当前位置与行程', generalEmergency: '综合紧急求助',
+    medicalEmergency: '医疗急救', policeEmergency: '警察', fireEmergency: '消防救援', callNumber: '拨打 {number}',
+    consularHelp: '领事保护', consularHelpDetail: '查看目的地领事协助信息', officialEmergencySource: '查看当地官方号码来源'
+  });
+
   Object.assign(translations['zh-CN'], {
     familyCenterEyebrow: '亲友同行保障', familyCenterTitle: '家庭共享中心', familyMembers: '家庭成员', familyPrivacy: '只有受邀成员可以查看',
     familyInviteLabel: '姓名或手机号', familyInvitePlaceholder: '例如：妈妈', familyRelation: '关系', relationFamily: '家人', relationPartner: '伴侣', relationFriend: '朋友', addMember: '添加',
@@ -127,7 +143,8 @@
 
   Object.assign(en, {
     familyChat: 'Family chat', navFamily: 'Family', familySpace: 'Family Space', familyChatTitle: 'Family chat', familyChatSubtitle: 'Join one family to chat, view trips and check in safely.',
-    registerAccount: 'Create account', loginAccount: 'Log in', familyAccount: 'Family account', demoAccountNote: 'This demo account stays on this device. Do not enter sensitive personal information.',
+    registerAccount: 'Create account', loginAccount: 'Log in', familyAccount: 'Family account', demoAccountNote: 'This demo account stays on this device. Do not enter sensitive personal information.', cloudAccountNote: 'Cloud account: use email worldwide or a +86 mobile number. Your family data syncs across devices.',
+    cloudConnectedLabel: 'Cloud sync', localDemoLabel: 'Local demo', familyCloudConnecting: 'Connecting to family cloud…', verificationCodeSent: 'Verification code sent. Please check your messages.',
     nickname: 'Your name', phoneOrEmail: 'Phone or email', verificationCode: 'Verification code', getCode: 'Get code', registerAndContinue: 'Create account and continue', loginAndContinue: 'Log in and continue',
     logoutAccount: 'Log out', createOrJoinFamily: 'Create or join a family', familyEntryHelp: 'Use the same invite code to enter one family chat.', createFamily: 'Create family', familyName: 'Family name',
     createAndEnter: 'Create and enter', joinFamily: 'Join with invite code', inviteCode: 'Family invite code', joinAndEnter: 'Join family', copyInviteCode: 'Copy invite code', leaveFamily: 'Leave family',
@@ -135,7 +152,7 @@
     nicknamePlaceholder: 'e.g. Alex', accountPlaceholder: 'Used to log in', loginAccountPlaceholder: 'Enter your registered account', codePlaceholder: '6 digits', travelerName: 'Traveler', familyNamePlaceholder: 'e.g. Our Happy Family', inviteCodePlaceholder: 'e.g. ET2026',
     sharedTripTitle: '{destination} family trip', tripDaysCount: '{count} days', viewFullTrip: 'View full itinerary', me: 'Me', familyRoomMeta: '{count} members · {online} online', chatInputPlaceholder: 'Message your family…',
     chatEmptyTitle: 'The family chat is ready', chatEmptyHelp: 'Send a message or share your current trip.', tripSharedToFamily: 'Trip shared in the family chat', demoCodeSent: 'Demo code filled in: {code}', completeAccountInfo: 'Please enter your name and account',
-    codeIncorrect: 'Use the demo verification code 123456', accountCreated: 'Account created', accountNotFound: 'No local account found. Please create one first.', loginSuccessful: 'Logged in', enterFamilyName: 'Enter a family name',
+    codeIncorrect: 'Use the demo verification code 123456', accountCreated: 'Account created', accountNotFound: 'No local account found. Please create one first.', loginSuccessful: 'Logged in', enterFamilyName: 'Enter a family name', invalidContact: 'Enter a valid email address or mainland China mobile number', overseasPhoneEmailHint: 'International SMS is not enabled yet. Please use email for this pilot.', requestCodeFirst: 'Request a verification code first', familyNotFound: 'No family was found for this invite code', alreadyInFamily: 'Leave the current family before joining another one', cloudUnavailable: 'The family cloud is temporarily unavailable. Please try again later.', realtimeDisconnected: 'Live chat connection was interrupted. Reopen the family page to reconnect.', tripPlanFallback: 'Travel plan',
     familyCreatedMessage: '{name} was created. Copy the invite code for your family.', familyCreated: 'Family created', enterValidInviteCode: 'Enter a valid family invite code', demoFamilyName: 'Our Family', joinedFamilyMessage: 'You joined the family chat',
     familyWelcomeMessage: 'I am here. You can share the travel plan in this chat.', joinedFamily: 'Joined the family', familyAutoReply: 'Got it. I can see the message and itinerary here.', enterFamilyBeforeShare: 'Log in and enter a family before sharing',
     familyInviteChatMessage: 'Join “{family}” in EasyTrip with invite code: {code}', inviteCodeCopied: 'Invite code copied: {code}', leftFamily: 'You left the family'
@@ -143,7 +160,8 @@
 
   Object.assign(translations['zh-CN'], {
     familyChat: '家庭群聊', navFamily: '家庭', familySpace: 'Family Space · 家庭空间', familyChatTitle: '家庭群聊', familyChatSubtitle: '一家人进入同一个家庭，聊天、看行程、互相报平安。',
-    registerAccount: '注册账号', loginAccount: '登录', familyAccount: '家庭账号', demoAccountNote: '演示账号只保存在本机，请勿填写真实敏感信息。',
+    registerAccount: '注册账号', loginAccount: '登录', familyAccount: '家庭账号', demoAccountNote: '演示账号只保存在本机，请勿填写真实敏感信息。', cloudAccountNote: '云端账号：全球可用邮箱验证码，中国大陆可用 +86 手机验证码；家庭数据会跨设备同步。',
+    cloudConnectedLabel: '云端同步', localDemoLabel: '本机演示', familyCloudConnecting: '正在连接家庭云端…', verificationCodeSent: '验证码已发送，请查看短信或邮箱。',
     nickname: '你的称呼', phoneOrEmail: '手机号或邮箱', verificationCode: '验证码', getCode: '获取验证码', registerAndContinue: '注册并继续', loginAndContinue: '登录并继续',
     logoutAccount: '退出账号', createOrJoinFamily: '创建或加入一个家庭', familyEntryHelp: '家人使用同一个邀请码，就能进入同一个聊天室。', createFamily: '创建家庭', familyName: '家庭名称',
     createAndEnter: '创建并进入', joinFamily: '使用邀请码加入', inviteCode: '家庭邀请码', joinAndEnter: '加入家庭', copyInviteCode: '复制邀请码', leaveFamily: '退出家庭',
@@ -151,7 +169,7 @@
     nicknamePlaceholder: '例如：小林', accountPlaceholder: '用于登录家庭', loginAccountPlaceholder: '输入已注册账号', codePlaceholder: '6位数字', travelerName: '旅行者', familyNamePlaceholder: '例如：幸福一家', inviteCodePlaceholder: '例如：ET2026',
     sharedTripTitle: '{destination}家庭旅行', tripDaysCount: '{count}天旅行计划', viewFullTrip: '查看完整行程', me: '我', familyRoomMeta: '{count}位成员 · {online}人在线', chatInputPlaceholder: '发消息给家人…',
     chatEmptyTitle: '家庭聊天室已准备好', chatEmptyHelp: '发送一句话，或者把当前旅行计划分享进来。', tripSharedToFamily: '行程已发送到家庭群聊', demoCodeSent: '演示验证码已填入：{code}', completeAccountInfo: '请填写称呼和登录账号',
-    codeIncorrect: '请输入演示验证码 123456', accountCreated: '账号注册成功', accountNotFound: '本机没有这个账号，请先注册', loginSuccessful: '登录成功', enterFamilyName: '请输入家庭名称',
+    codeIncorrect: '请输入演示验证码 123456', accountCreated: '账号注册成功', accountNotFound: '本机没有这个账号，请先注册', loginSuccessful: '登录成功', enterFamilyName: '请输入家庭名称', invalidContact: '请输入有效的邮箱或中国大陆手机号', overseasPhoneEmailHint: '第一阶段暂未开通国际短信，请使用邮箱验证码。', requestCodeFirst: '请先获取验证码', familyNotFound: '没有找到这个邀请码对应的家庭', alreadyInFamily: '请先退出当前家庭，再加入其他家庭', cloudUnavailable: '家庭云服务暂时无法连接，请稍后再试。', realtimeDisconnected: '实时聊天连接已中断，请重新进入家庭页面。', tripPlanFallback: '旅行计划',
     familyCreatedMessage: '“{name}”已创建，把邀请码发给家人即可加入。', familyCreated: '家庭创建成功', enterValidInviteCode: '请输入有效的家庭邀请码', demoFamilyName: '温暖一家', joinedFamilyMessage: '你已加入家庭群聊',
     familyWelcomeMessage: '我已经进来了，旅行计划发在这里就可以。', joinedFamily: '已加入家庭', familyAutoReply: '收到，我能在这里看到消息和行程。', enterFamilyBeforeShare: '请先登录并进入一个家庭',
     familyInviteChatMessage: '邀请你加入一路简行的“{family}”，家庭邀请码：{code}', inviteCodeCopied: '邀请码已复制：{code}', leftFamily: '已退出家庭'

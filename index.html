@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#167a6b">
   <meta name="description" content="一路简行——面向全年龄用户的国内与国际旅行计划演示 App">
   <title>一路简行 · 旅行计划 App 演示</title>
+  <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -127,6 +128,7 @@
             <span class="eyebrow" id="tripScope">国内家庭旅行</span>
             <h1 id="tripTitle">成都 · 4天轻松游</h1>
             <p id="tripMeta">2026年9月12日出发 · 4人 · 舒适平衡</p>
+            <p class="regional-context" id="regionalContext">🇨🇳 中国 · CNY · Asia/Shanghai · 高德地图</p>
           </div>
           <button class="share-button" id="shareButton" type="button">分享</button>
         </div>
@@ -205,7 +207,10 @@
             <button type="button" data-family-auth-mode="login" role="tab" aria-selected="false" data-i18n="loginAccount">登录</button>
           </div>
           <h2 class="sr-only" id="familyAccountTitle" data-i18n="familyAccount">家庭账号</h2>
-          <p class="family-demo-note" data-i18n="demoAccountNote">演示账号只保存在本机，请勿填写真实敏感信息。</p>
+          <div class="family-backend-status" role="status">
+            <span class="family-backend-badge" id="familyBackendBadge">本机演示</span>
+            <p class="family-demo-note" id="familyBackendNote" data-i18n="demoAccountNote">演示账号只保存在本机，请勿填写真实敏感信息。</p>
+          </div>
           <form class="family-account-form active" id="familyRegisterForm" data-family-auth-form="register">
             <label><span data-i18n="nickname">你的称呼</span><input id="familyRegisterNickname" type="text" maxlength="20" autocomplete="nickname" placeholder="例如：小林"></label>
             <label><span data-i18n="phoneOrEmail">手机号或邮箱</span><input id="familyRegisterAccount" type="text" maxlength="50" autocomplete="username" placeholder="用于登录家庭"></label>
@@ -405,12 +410,17 @@
 
   <dialog id="emergencyDialog" class="sheet-dialog emergency-dialog">
     <form method="dialog" class="dialog-card">
-      <button class="dialog-close" value="cancel" aria-label="关闭">×</button>
-      <span class="eyebrow">紧急帮助</span>
-      <h2>你需要联系谁？</h2>
-      <button class="emergency-option" type="button" data-emergency="family"><strong>联系家人</strong><span>发送当前位置与行程</span></button>
-      <button class="emergency-option" type="button" data-emergency="medical"><strong>医疗急救</strong><span id="medicalNumber">拨打 120</span></button>
-      <button class="emergency-option international-essential" type="button" data-emergency="consulate"><strong>领事保护</strong><span>查看目的地领事协助信息</span></button>
+      <button class="dialog-close" value="cancel" aria-label="关闭" data-i18n-aria="close">×</button>
+      <span class="eyebrow" data-i18n="emergencyHelp">紧急帮助</span>
+      <h2 data-i18n="emergencyWho">你需要联系谁？</h2>
+      <p class="emergency-region" id="emergencyRegion">当前目的地：中国</p>
+      <button class="emergency-option" type="button" data-emergency="family"><strong data-i18n="contactFamily">联系家人</strong><span data-i18n="contactFamilyHelp">发送当前位置与行程</span></button>
+      <a class="emergency-option" id="generalEmergencyCall" href="tel:112" data-emergency="general" hidden><strong data-i18n="generalEmergency">综合紧急求助</strong><span id="generalEmergencyNumber">拨打 112</span></a>
+      <a class="emergency-option" id="medicalCall" href="tel:120" data-emergency="medical"><strong data-i18n="medicalEmergency">医疗急救</strong><span id="medicalNumber">拨打 120</span></a>
+      <a class="emergency-option" id="policeCall" href="tel:110" data-emergency="police"><strong data-i18n="policeEmergency">警察</strong><span id="policeNumber">拨打 110</span></a>
+      <a class="emergency-option" id="fireCall" href="tel:119" data-emergency="fire"><strong data-i18n="fireEmergency">消防救援</strong><span id="fireNumber">拨打 119</span></a>
+      <button class="emergency-option international-essential" type="button" data-emergency="consulate"><strong data-i18n="consularHelp">领事保护</strong><span data-i18n="consularHelpDetail">查看目的地领事协助信息</span></button>
+      <a class="emergency-source" id="emergencyOfficialSource" href="#" target="_blank" rel="noopener noreferrer" data-i18n="officialEmergencySource">查看当地官方号码来源</a>
     </form>
   </dialog>
 
@@ -430,9 +440,12 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="map-config.js"></script>
+  <script src="cloud-config.js"></script>
   <script src="i18n.js"></script>
+  <script src="region-config.js"></script>
   <script src="maps.js"></script>
   <script src="app.js"></script>
+  <script src="family-cloud.js"></script>
   <script src="family-chat.js"></script>
 </body>
 </html>

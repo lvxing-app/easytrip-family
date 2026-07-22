@@ -248,7 +248,9 @@
     if (window.google && window.google.maps) return;
     await new Promise((resolve, reject) => {
       window.EasyTripGoogleMapsReady = resolve;
-      const src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google.apiKey)}&loading=async&callback=EasyTripGoogleMapsReady&v=weekly&language=${encodeURIComponent((window.EasyTripI18n && window.EasyTripI18n.locale) || 'en')}`;
+      const locale = (window.EasyTripI18n && window.EasyTripI18n.locale) || 'en';
+      const region = currentContext && currentContext.regionCode ? `&region=${encodeURIComponent(currentContext.regionCode.toUpperCase())}` : '';
+      const src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(config.google.apiKey)}&loading=async&callback=EasyTripGoogleMapsReady&v=weekly&language=${encodeURIComponent(locale)}${region}`;
       loadScript('easytrip-google-maps-js', src).catch(reject);
       window.setTimeout(() => reject(new Error('Google Maps load timeout')), 9000);
     });
@@ -300,7 +302,8 @@
     const catalog = catalogFor(currentContext.destination);
     const points = resolvePoints(currentContext.destination, currentContext.activities);
     const target = points[0] || { name: currentContext.destination, coordinates: catalog.center };
-    if (currentContext.market === 'domestic') {
+    const provider = currentContext.mapProvider || (currentContext.market === 'domestic' ? 'amap' : 'google');
+    if (provider === 'amap') {
       const amapMode = { walking: 'walk', transit: 'bus', driving: 'car' }[currentMode];
       const params = new URLSearchParams({
         from: '',
@@ -316,7 +319,8 @@
       api: '1',
       destination: `${target.name}, ${currentContext.destination}`,
       travelmode: currentMode,
-      dir_action: 'navigate'
+      dir_action: 'navigate',
+      region: currentContext.regionCode || ''
     });
     return `https://www.google.com/maps/dir/?${params.toString()}`;
   }
@@ -353,21 +357,22 @@
     setLoading(true, t('loadingMap'));
 
     try {
-      if (context.market === 'domestic' && config.amap && config.amap.key) {
+      const provider = context.mapProvider || (context.market === 'domestic' ? 'amap' : 'google');
+      if (provider === 'amap' && config.amap && config.amap.key) {
         setProviderLabel('高德地图 AMap', t('liveMap'));
         $('#mapStatus').textContent = t('amapRouteReady');
         await renderAMap(points, catalog.center, sequence);
         return;
       }
-      if (context.market === 'international' && config.google && config.google.apiKey) {
+      if (provider === 'google' && config.google && config.google.apiKey) {
         setProviderLabel('Google Maps', t('liveMap'));
         $('#mapStatus').textContent = t('googleRouteReady');
         await renderGoogle(points, catalog.center, sequence);
         return;
       }
       if (config.fallback && config.fallback.enabled) {
-        setProviderLabel(context.market === 'domestic' ? '高德地图 · AMap' : 'Google Maps', t('fallbackMap'));
-        $('#mapStatus').textContent = context.market === 'domestic' ? t('amapExternalReady') : t('googleExternalReady');
+        setProviderLabel(provider === 'amap' ? '高德地图 · AMap' : 'Google Maps', t('fallbackMap'));
+        $('#mapStatus').textContent = provider === 'amap' ? t('amapExternalReady') : t('googleExternalReady');
         await renderLeaflet(points, catalog.center, sequence);
         return;
       }
